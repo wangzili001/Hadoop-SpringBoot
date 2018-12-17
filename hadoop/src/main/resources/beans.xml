@@ -7,10 +7,9 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/hadoop http://www.springframework.org/schema/hadoop/spring-hadoop.xsd">
 
-
-
     <hdp:configuration id="hadoopConfiguration">
-        fs.defaultFS=hdfs://192.168.1.134:9000
+        fs.defaultFS=${spring.hadoop.fsUri}
     </hdp:configuration>
+    <context:property-placeholder location="application.yml"/>
     <hdp:file-system id="fileSystem" configuration-ref="hadoopConfiguration" user="wangzili"></hdp:file-system>
 </beans>

@@ -40,10 +40,16 @@
             <artifactId>hadoop-client</artifactId>
             <version>${hadoop.version}</version>
         </dependency>
-        <!--SpringBoot Hadoop依赖-->
+        <!--Spring Hadoop依赖-->
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-hadoop</artifactId>
+            <version>2.5.0.RELEASE</version>
+        </dependency>
+        <!--SpringBoot Hadoop依赖-->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-hadoop-boot</artifactId>
             <version>2.5.0.RELEASE</version>
         </dependency>
     </dependencies>
