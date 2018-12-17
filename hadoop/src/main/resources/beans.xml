@@ -12,5 +12,5 @@
     <hdp:configuration id="hadoopConfiguration">
         fs.defaultFS=hdfs://192.168.1.134:9000
     </hdp:configuration>
-    <hdp:file-system id="fileSystem" configuration-ref="hadoopConfiguration" user="root"></hdp:file-system>
+    <hdp:file-system id="fileSystem" configuration-ref="hadoopConfiguration" user="wangzili"></hdp:file-system>
 </beans>
