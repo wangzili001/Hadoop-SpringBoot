@@ -40,8 +40,8 @@ public class WordCountDriver {
         job.setCombinerClass(WordCountReducer.class);
 
         //指定本次mr 输入的数据路径 和最终输出结果存放在什么位置
-        FileInputFormat.setInputPaths(job,"F:\\wordcount\\input");
-        FileOutputFormat.setOutputPath(job,new Path("F:\\wordcount\\output"));
+        FileInputFormat.setInputPaths(job,"F:\\mapreduce\\wordcount\\input");
+        FileOutputFormat.setOutputPath(job,new Path("F:\\mapreduce\\wordcount\\output"));
         //如果出现0644错误或找不到winutils.exe,则需要设置windows环境和相关文件.
 
         //上面的路径是本地测试时使用，如果要打包jar到hdfs上运行时，需要使用下面的路径。
