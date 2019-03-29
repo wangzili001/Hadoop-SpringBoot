@@ -8,7 +8,8 @@ import org.apache.hadoop.mapreduce.Mapper;
 import java.io.IOException;
 
 //map阶段
-
+//KEYIN, VALUEIN, 输入k v
+// KEYOUT, VALUEOUT 输出的K V
 public class WordCountMapper extends Mapper<LongWritable,Text,Text,IntWritable> {
     /**
      *  这里就是mapper阶段具体的业务逻辑实现方法  该方法的调用取决于读取数据的组件有没有给mr传入数据
@@ -26,7 +27,7 @@ public class WordCountMapper extends Mapper<LongWritable,Text,Text,IntWritable> 
         String line = value.toString();
 
         //将这一行内容按照分隔符进行一行内容的切割 切割成一个单词数组
-        String[] words = line.split(" ");
+        String[] words = line.split("\\t");
 
         //遍历数组，每出现一个单词  就标记一个数字1  <单词，1>
         for (String word : words) {
