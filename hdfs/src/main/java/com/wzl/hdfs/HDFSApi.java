@@ -86,9 +86,9 @@ public class HDFSApi {
         System.out.println("是否是文件夹："+directory+"==========  是否是文件:"+file);
         System.out.println("判断完成");
     }
-    //下载大文件的一个块
+    //下载大文件的第一个块
     @Test
-    public void readFileSeek() throws IOException {
+    public void readFileSeek1() throws IOException {
         //获取输入流
         FSDataInputStream fis = fs.open(new Path("/test/hadoop-2.6.0-cdh5.7.0.tar.gz"));
         //获取输出流
@@ -99,6 +99,21 @@ public class HDFSApi {
             fis.read(bytes);
             fos.write(bytes);
         }
+        //关闭资源
+        IOUtils.closeStream(fis);
+        IOUtils.closeStream(fos);
+    }
+    //下载文件第二个块
+    @Test
+    public void readFileSeek2() throws IOException{
+        //获取输入流
+        FSDataInputStream fis = fs.open(new Path("/test/hadoop-2.6.0-cdh5.7.0.tar.gz"));
+        //设置指定起点
+        fis.seek(1024*1024*128);
+        //获取输出流
+        FileOutputStream fos = new FileOutputStream(new File("D://hadoop-2.6.0-cdh5.7.0.tar.gz.part1"));
+
+        IOUtils.copyBytes(fis,fos,conf);
         //关闭资源
         IOUtils.closeStream(fis);
         IOUtils.closeStream(fos);
