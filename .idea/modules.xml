@@ -3,8 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Hadoop-SpringBoot.iml" filepath="$PROJECT_DIR$/.idea/Hadoop-SpringBoot.iml" />
-      <module fileurl="file://$PROJECT_DIR$/hadoop/hadoop.iml" filepath="$PROJECT_DIR$/hadoop/hadoop.iml" />
-      <module fileurl="file://$PROJECT_DIR$/hadooptrain/hadoop-train.iml" filepath="$PROJECT_DIR$/hadooptrain/hadoop-train.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hdfs/hdfs.iml" filepath="$PROJECT_DIR$/hdfs/hdfs.iml" />
     </modules>
   </component>
 </project>

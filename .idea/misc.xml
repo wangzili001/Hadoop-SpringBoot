@@ -6,8 +6,8 @@
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
-        <option value="$PROJECT_DIR$/hadoop/pom.xml" />
         <option value="$PROJECT_DIR$/hadooptrain/pom.xml" />
+        <option value="$PROJECT_DIR$/hdfs/pom.xml" />
       </list>
     </option>
   </component>
