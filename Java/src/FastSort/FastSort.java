@@ -1,32 +1,29 @@
 package FastSort;
 
 public class FastSort {
-
-    public static int partition(int []array,int lo,int hi){
-        //固定的切分方式
-        int key=array[lo];
-        while(lo<hi){
-            //从后半部分向前扫描
-            while(array[hi]>=key&&hi>lo){
-                hi--;
+    /**
+     * 查找出中轴（默认是最低位low）的在numbers数组排序后所在位置
+     *
+     * @param low  开始位置
+     * @param high 结束位置
+     * @return 中轴所在位置
+     */
+    public static int getMid(int[] arr, int low, int high) {
+        int temp = arr[low];
+        while (low < high) {
+            while (low < high && arr[high] > temp) {
+                high--;
             }
-            array[lo]=array[hi];
-            //从前半部分向后扫描
-            while(array[lo]<=key&&hi>lo){
-                lo++;
+            //比中轴小的记录移到低端
+            arr[low] = arr[high];
+            while (low < high && arr[low] < temp) {
+                low++;
             }
-            array[hi]=array[lo];
+            //比中轴大的记录移到高端
+            arr[high] = arr[low];
         }
-        array[hi]=key;
-        return hi;
-    }
-
-    public static void sort(int[] array,int lo ,int hi){
-        if(lo>=hi){
-            return ;
-        }
-        int index=partition(array,lo,hi);
-        sort(array,lo,index-1);
-        sort(array,index+1,hi);
+        //中轴记录到尾
+        arr[low] = temp;
+        return low;
     }
 }
