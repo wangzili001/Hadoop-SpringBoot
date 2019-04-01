@@ -21,14 +21,15 @@ public class FlowBean implements Writable {
         this.down_flow = down_flow;
         this.sum_flow = up_flow + down_flow;
     }
-
+    //重写序列化方法
     public void write(DataOutput output) throws IOException {
         output.writeUTF(phoneNB);
         output.writeLong(up_flow);
         output.writeLong(down_flow);
         output.writeLong(sum_flow);
     }
-
+    //重写反序列化方法
+    //注意反序列化的顺序和序列化的顺序完全一致
     public void readFields(DataInput input) throws IOException {
         this.phoneNB = input.readUTF();
         this.up_flow = input.readLong();
