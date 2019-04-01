@@ -23,12 +23,11 @@ public class FlowSumArea {
         job.setMapperClass(FlowSumAreaMapper.class);
         job.setReducerClass(FlowSumAreaReducer.class);
 
-        // 定义分组逻辑类
-        job.setPartitionerClass(AreaPartitioner.class);
-
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(FlowBean.class);
 
+        // 定义分组逻辑类
+        job.setPartitionerClass(AreaPartitioner.class);
         // 设定reducer的任务并发数,应该跟分组的数量保持一致
         job.setNumReduceTasks(6);
 
