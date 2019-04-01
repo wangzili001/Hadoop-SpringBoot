@@ -16,7 +16,7 @@ public class AreaPartitioner extends Partitioner<Text, FlowBean> {
         areaMap.put("138", 3);
         areaMap.put("139", 4);
     }
-
+    @Override
     public int getPartition(Text text, FlowBean flowBean, int numPartitions) {
         // 从key中拿到手机号，查询手机归属地字典，不同的省份返回不同的组号
         Integer areCoder = areaMap.get(text.toString().substring(0, 3));
