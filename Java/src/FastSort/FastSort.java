@@ -1,5 +1,6 @@
 package FastSort;
 
+// https://www.cnblogs.com/0201zcr/p/4763806.html
 public class FastSort {
     /**
      * 查找出中轴（默认是最低位low）的在numbers数组排序后所在位置

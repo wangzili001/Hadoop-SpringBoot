@@ -1,4 +1,4 @@
-package com.imooc.hadoop.mapreduce.PhonePayLoadSortMapReduce;
+package com.imooc.hadoop.mapreduce.SortPartition;
 
 import org.apache.hadoop.io.WritableComparable;
 
@@ -6,7 +6,7 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
-public class  FlowBean implements WritableComparable<FlowBean> {
+public class FlowBean implements WritableComparable<FlowBean> {
     private String phoneNB;
     private long up_flow;
     private long down_flow;
