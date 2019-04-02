@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Hadoop-SpringBoot.iml" filepath="$PROJECT_DIR$/.idea/Hadoop-SpringBoot.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Java/Java.iml" filepath="$PROJECT_DIR$/Java/Java.iml" />
       <module fileurl="file://$PROJECT_DIR$/Mapreduce/hadoop-train.iml" filepath="$PROJECT_DIR$/Mapreduce/hadoop-train.iml" />
       <module fileurl="file://$PROJECT_DIR$/hdfs/hdfs.iml" filepath="$PROJECT_DIR$/hdfs/hdfs.iml" />
     </modules>

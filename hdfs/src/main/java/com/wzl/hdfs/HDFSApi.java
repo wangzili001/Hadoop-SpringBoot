@@ -22,7 +22,7 @@ public class HDFSApi {
     @Before
     public void HDFSClientStart() throws URISyntaxException, IOException, InterruptedException {
         conf = new Configuration();
-        fs= FileSystem.get(new URI("hdfs://master:9000"), conf, "wangzili");
+        fs= FileSystem.get(new URI("hdfs://hadoop1:9000"), conf, "wangzili");
     }
     @Test
     @After
@@ -35,7 +35,7 @@ public class HDFSApi {
     public void CopyFromLocalFile() throws IOException {
         //设置副本系数
 //        conf.set("dfs.replication","3");
-        fs.copyFromLocalFile(new Path("D:\\环境\\SparkStream\\hadoop-2.6.0-cdh5.7.0.tar.gz"),new Path("/test"));
+        fs.copyFromLocalFile(new Path("F:\\mapreduce\\wordcount\\input\\a.txt"),new Path("/wordcount/input/a.txt"));
         System.out.println("上传完成");
     }
     //文件删除

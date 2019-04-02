@@ -15,9 +15,9 @@ public class HDFSClient {
         Configuration conf = new Configuration();
 //        conf.set("fs.default.name","hdfs://master:9000");
 //        FileSystem fs = FileSystem.get(conf);
-        FileSystem fs = FileSystem.get(new URI("hdfs://master:9000"), conf, "wangzili");
+        FileSystem fs = FileSystem.get(new URI("hdfs://hadoop1:9000"), conf, "wangzili");
         //创建文件夹
-        fs.mkdirs(new Path("/test/wangzili"));
+        fs.mkdirs(new Path("/wordcount/input"));
         //删除文件夹
 //        fs.delete(new Path("/test/wangzili"),true);
         //3.关闭连接
