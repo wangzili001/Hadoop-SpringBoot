@@ -25,11 +25,13 @@ public class OrderDriver {
         job.setMapperClass(OrderMapper.class);
         job.setReducerClass(OrderReducer.class);
 
-        job.setMapOutputKeyClass(FlowBean.class);
+        job.setMapOutputKeyClass(Order.class);
         job.setMapOutputValueClass(NullWritable.class);
 
-        job.setOutputKeyClass(FlowBean.class);
+        job.setOutputKeyClass(Order.class);
         job.setOutputValueClass(NullWritable.class);
+
+        job.setGroupingComparatorClass(OrderSortGrouping.class);
 
         FileInputFormat.setInputPaths(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));

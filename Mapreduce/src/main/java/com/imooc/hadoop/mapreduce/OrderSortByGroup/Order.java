@@ -21,40 +21,39 @@ public class Order implements WritableComparable<Order> {
     private int price;
 
     public int compareTo(Order o) {
-        int result = 0;
+        int result;
         //先按订单升序 再按价格降序
-        if(this.id<o.id){
-            result = 1;
-        }else if(this.id>o.id){
+        if(id<o.id){
             result = -1;
+        }else if(id>o.id){
+            result = 1;
         }else {
-            result = this.price>o.price?1:-1;
+            result = price>o.price?-1:1;
         }
         return result;
     }
 
     public void write(DataOutput out) throws IOException {
-        out.write(id);
-        out.write(price);
+        out.writeInt(id);
+        out.writeInt(price);
     }
 
     public void readFields(DataInput in) throws IOException {
-        this.id = in.readInt();
-        this.price = in.readInt();
+        id = in.readInt();
+        price = in.readInt();
     }
 
-    public void Order(){
-
+    public  Order(){
     }
 
-    public void Order(int id,int price){
+    public  Order(int id,int price){
         this.id = id;
         this.price = price;
     }
 
     @Override
     public String toString() {
-        return id + "/t" + price;
+        return id + "\t" + price;
     }
 
     public int getId() {
