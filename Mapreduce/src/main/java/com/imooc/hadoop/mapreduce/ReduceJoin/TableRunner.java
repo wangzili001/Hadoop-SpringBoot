@@ -1,9 +1,5 @@
-package com.imooc.hadoop.mapreduce.TableJoin;
+package com.imooc.hadoop.mapreduce.ReduceJoin;
 
-import com.imooc.hadoop.mapreduce.SortPartition.AreaPartitioner;
-import com.imooc.hadoop.mapreduce.SortPartition.FlowBean;
-import com.imooc.hadoop.mapreduce.SortPartition.SortMapper;
-import com.imooc.hadoop.mapreduce.SortPartition.SortReducer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.NullWritable;

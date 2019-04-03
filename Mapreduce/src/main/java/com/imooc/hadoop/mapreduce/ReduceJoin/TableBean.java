@@ -1,4 +1,4 @@
-package com.imooc.hadoop.mapreduce.TableJoin;
+package com.imooc.hadoop.mapreduce.ReduceJoin;
 
 import org.apache.hadoop.io.Writable;
 

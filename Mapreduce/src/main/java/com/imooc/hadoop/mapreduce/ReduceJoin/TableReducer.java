@@ -1,4 +1,4 @@
-package com.imooc.hadoop.mapreduce.TableJoin;
+package com.imooc.hadoop.mapreduce.ReduceJoin;
 
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
@@ -6,7 +6,6 @@ import org.apache.hadoop.mapreduce.Reducer;
 import org.springframework.beans.BeanUtils;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class TableReducer extends Reducer<Text, TableBean, TableBean, NullWritable> {
