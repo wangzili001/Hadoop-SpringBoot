@@ -2,8 +2,10 @@ package com.imooc.hadoop.mapreduce.MapJoin;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.io.IOUtils;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
+
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.yarn.logaggregation.AggregatedLogFormat;
 
@@ -14,7 +16,7 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.util.HashMap;
 
-public class DistributedCacheMapper extends Mapper<AggregatedLogFormat.LogWriter, Text,Text, NullWritable> {
+public class DistributedCacheMapper extends Mapper<LongWritable, Text,Text, NullWritable> {
     Text k = new Text();
     HashMap<String, String> pdMap = new HashMap<String, String>();
     @Override
@@ -36,8 +38,8 @@ public class DistributedCacheMapper extends Mapper<AggregatedLogFormat.LogWriter
     }
 
     @Override
-    protected void map(AggregatedLogFormat.LogWriter key, Text value, Context context) throws IOException, InterruptedException {
-        String[] fileds = value.toString().split("\t");
+    protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+        String[] fileds = new String(value.getBytes(),0,value.getLength(),"GBK").toString().split("\t");
         //拼接
         String line = fileds[0]+"\t"+pdMap.get(fileds[1])+"\t"+fileds[2];
 

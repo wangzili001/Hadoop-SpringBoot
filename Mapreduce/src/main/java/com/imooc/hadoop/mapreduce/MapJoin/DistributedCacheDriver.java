@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 public class DistributedCacheDriver {
     public static void main(String[] args) throws IOException, URISyntaxException, ClassNotFoundException, InterruptedException {
         BasicConfigurator.configure();
-//        args = new String[]{"F:\\mapreduce\\MapJoin\\input","F:\\mapreduce\\MapJoin\\output"};
+        args = new String[]{"F:\\mapreduce\\mapjoin\\input","F:\\mapreduce\\mapjoin\\output"};
         Configuration conf = new Configuration();
 
         Job job = Job.getInstance(conf);
@@ -32,7 +32,7 @@ public class DistributedCacheDriver {
         job.setOutputKeyClass(TableBean.class);
         job.setOutputValueClass(NullWritable.class);
         //加载缓存数据
-        job.addCacheFile(new URI("file:///home/wangzili/mapreduce/pd.txt"));
+        job.addCacheFile(new URI("file:///F:/mapreduce/mapjoin/pd.txt"));
         //Map端Join的逻辑不需要Reduce阶段，设置reduceTask数量为0
         job.setNumReduceTasks(0);
 
