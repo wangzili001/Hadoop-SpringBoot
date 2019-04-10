@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/Hadoop-SpringBoot.iml" filepath="$PROJECT_DIR$/.idea/Hadoop-SpringBoot.iml" />
       <module fileurl="file://$PROJECT_DIR$/Mapreduce/hadoop-train.iml" filepath="$PROJECT_DIR$/Mapreduce/hadoop-train.iml" />
       <module fileurl="file://$PROJECT_DIR$/hdfs/hdfs.iml" filepath="$PROJECT_DIR$/hdfs/hdfs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hive/hive.iml" filepath="$PROJECT_DIR$/hive/hive.iml" />
     </modules>
   </component>
 </project>

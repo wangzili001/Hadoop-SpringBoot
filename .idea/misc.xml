@@ -9,6 +9,7 @@
         <option value="$PROJECT_DIR$/hadooptrain/pom.xml" />
         <option value="$PROJECT_DIR$/hdfs/pom.xml" />
         <option value="$PROJECT_DIR$/Mapreduce/pom.xml" />
+        <option value="$PROJECT_DIR$/hive/pom.xml" />
       </list>
     </option>
   </component>

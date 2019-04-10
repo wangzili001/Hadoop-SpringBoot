@@ -6,14 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Hadoop-SpringBoot" />
         <module name="hadoop-train" />
         <module name="hdfs" />
+        <module name="hive" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="hadoop" target="1.8" />
+      <module name="Hadoop-SpringBoot" target="1.5" />
       <module name="hadoop-train" target="1.5" />
       <module name="hdfs" target="1.5" />
+      <module name="hive" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
