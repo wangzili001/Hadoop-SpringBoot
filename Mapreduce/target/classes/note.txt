@@ -1,0 +1,118 @@
++----------------+-------------+-------------+--------------------+-----------------+--+
+| t_user.userid  | t_user.sex  | t_user.age  | t_user.occupation  | t_user.zipcode  |
++----------------+-------------+-------------+--------------------+-----------------+--+
+| 1              | F           | 1           | 10                 | 48067           |
+| 2              | M           | 56          | 16                 | 70072           |
+| 3              | M           | 25          | 15                 | 55117           |
+| 4              | M           | 45          | 7                  | 02460           |
+| 5              | M           | 25          | 20                 | 55455           |
+| 6              | F           | 50          | 9                  | 55117           |
+| 7              | M           | 35          | 1                  | 06810           |
+| 8              | M           | 25          | 12                 | 11413           |
+| 9              | M           | 25          | 17                 | 61614           |
+| 10             | F           | 35          | 1                  | 95370           |
++----------------+-------------+-------------+--------------------+-----------------+--+
+
+
++------------------+-------------------------------------+-------------------------------+--+
+| t_movie.movieid  |          t_movie.moviename          |       t_movie.movietype       |
++------------------+-------------------------------------+-------------------------------+--+
+| 1                | Toy Story (1995)                    | Animation|Children's|Comedy   |
+| 2                | Jumanji (1995)                      | Adventure|Children's|Fantasy  |
+| 3                | Grumpier Old Men (1995)             | Comedy|Romance                |
+| 4                | Waiting to Exhale (1995)            | Comedy|Drama                  |
+| 5                | Father of the Bride Part II (1995)  | Comedy                        |
+| 6                | Heat (1995)                         | Action|Crime|Thriller         |
+| 7                | Sabrina (1995)                      | Comedy|Romance                |
+| 8                | Tom and Huck (1995)                 | Adventure|Children's          |
+| 9                | Sudden Death (1995)                 | Action                        |
+| 10               | GoldenEye (1995)                    | Action|Adventure|Thriller     |
++------------------+-------------------------------------+-------------------------------+--+
+
+
++------------------+-------------------+----------------+-----------------+--+
+| t_rating.userid  | t_rating.movieid  | t_rating.rate  | t_rating.times  |
++------------------+-------------------+----------------+-----------------+--+
+| 1                | 1193              | 5.0            | 978300760       |
+| 1                | 661               | 3.0            | 978302109       |
+| 1                | 914               | 3.0            | 978301968       |
+| 1                | 3408              | 4.0            | 978300275       |
+| 1                | 2355              | 5.0            | 978824291       |
+| 1                | 1197              | 3.0            | 978302268       |
+| 1                | 1287              | 5.0            | 978302039       |
+| 1                | 2804              | 5.0            | 978300719       |
+| 1                | 594               | 4.0            | 978302268       |
+| 1                | 919               | 4.0            | 978301368       |
++------------------+-------------------+----------------+-----------------+--+
+
+
+
+
+
+
+video id	视频唯一	id 	1 位字符串
+uploader  视频上传者  上传视频的用户名 String
+age  视频年龄  视频上传日期和 2007 年 2 月
+15 日之间的整数天（Youtube
+的独特设定）
+category  视频类别  上传视频指定的视频分类
+length  视频长度  整形数字标识的视频长度
+views  观看次数  视频被浏览的次数
+rate  视频评分  满分 5 分
+ratings  流量  视频的流量，整型数字
+conments  评论数  一个视频的整数评论数
+related ids  相关视频 id  相关视频的 id，最多 20 个
+
+
+
+字段  备注  字段类型
+uploader  上传者用户名  string
+videos  上传视频数  int
+friends  朋友数量  int
+
+
+
+select
+  videoId,category_name 
+from
+  youtube_orc lateral view explode(category) t_category as category_name
+  
+  
+  
+  
+select
+  category_name as category,
+  count(t1.videoId) as hot
+from(
+ select
+   videoId,category_name 
+ from
+   youtube_orc lateral view explode(category) t_category as category_name
+   ) t1
+group by
+ t1.category_name
+order by hot desc limit 10;
+
+
+
+
+
+select 
+ videoId,category_name
+from (select videoId,category,views from youtube_orc order by views desc limit 20) t1 
+ lateral view explode(category)t1_tmp as category_name;
+
+select t2.category_name as category,count(t2.videoId) as times
+from (
+select 
+ videoId,category_name
+from (select videoId,category,views from youtube_orc order by views desc limit 20) t1 
+ lateral view explode(category)t1_tmp as category_name) t2
+ group by t2.category_name;
+ 
+ 统计视频观看数 Top50  所关联视频 的所属类别
+ 
+ 第一步：select relatedId,views from youtube_orc order by views desc limit 50;
+ 第二步：select explode(relatedId) as videoId from (select relatedId,views from youtube_orc order by views desc limit 50)t1;
+ 第三步：select distinct(t2.videoId),t2.category from youtube_orc t2 join  (select explode(relatedId) as videoId from (select relatedId,views from youtube_orc order by views desc limit 50)t1)
+			t3 on t2.videoId = t3.videoId;

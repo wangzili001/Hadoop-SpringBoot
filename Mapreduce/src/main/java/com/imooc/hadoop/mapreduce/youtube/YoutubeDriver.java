@@ -21,6 +21,9 @@ public class YoutubeDriver  implements Tool {
     private Configuration conf = null;
 
     public static void main(String[] args) throws Exception {
+        if(args.length<2){
+            throw new Exception("传入参数有误");
+        }
         BasicConfigurator.configure();
         YoutubeDriver youtubeDriver = new YoutubeDriver();
         int resultCode = ToolRunner.run(youtubeDriver,args);

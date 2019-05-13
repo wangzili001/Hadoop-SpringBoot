@@ -22,7 +22,7 @@ public class HDFSApi {
     @Before
     public void HDFSClientStart() throws URISyntaxException, IOException, InterruptedException {
         conf = new Configuration();
-        fs= FileSystem.get(new URI("hdfs://hadoop1:9000"), conf, "wangzili");
+        fs= FileSystem.get(new URI("hdfs://jerry:9000"), conf, "wangzili");
     }
     @Test
     @After
@@ -35,7 +35,7 @@ public class HDFSApi {
     public void CopyFromLocalFile() throws IOException {
         //设置副本系数
 //        conf.set("dfs.replication","3");
-        fs.copyFromLocalFile(new Path("F:\\mapreduce\\wordcount\\input\\a.txt"),new Path("/wordcount/input/a.txt"));
+        fs.copyFromLocalFile(new Path("file:///home/wangzili/Pictures/鬼刀180824/pic1.jpg"),new Path("/test/pic"));
         System.out.println("上传完成");
     }
     //文件删除
@@ -49,7 +49,7 @@ public class HDFSApi {
     public void CopyToLocalFile() throws IOException{
         //delSrc是指是否将原文件删除
         //useRawLocalFileSystem 是否开启文件效验
-        fs.copyToLocalFile(false,new Path("/test/accesslog.txt"),new Path("D:\\accesslog.txt"),true);
+        fs.copyToLocalFile(false,new Path("/test/pic"),new Path("/home/wangzili/mydata"),true);
         System.out.println("下载完成");
     }
     //修改文件名
@@ -61,7 +61,7 @@ public class HDFSApi {
     //查看文件详情 文件名称，权限，长度，块信息
     @Test
     public void CatFile() throws IOException{
-        RemoteIterator<LocatedFileStatus> listFiles = fs.listFiles(new Path("/test"),true);
+        RemoteIterator<LocatedFileStatus> listFiles = fs.listFiles(new Path("/test/pic"),true);
         while (listFiles.hasNext()){
             LocatedFileStatus fileStatus = listFiles.next();
 //            文件名称，权限，长度，块信息
